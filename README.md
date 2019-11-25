@@ -57,37 +57,37 @@ You're going to be fetching information from two endpoints. Where should you be 
 
 Checkpoint 3: Render the Areas
 ------------------------------
-Area info comes in through the `/areas` endpoint. You'll have to use that to render the right number of area components on the map. Styling is given for you but you'll have to pass the area name to the `id` attribute to make it appear in the right place on the map. Format the name to remove underscores and capitalize all words for the label. Ex: 'high_plains' should be displayed as "High Plains"
+✅ Area info comes in through the `/areas` endpoint. You'll have to use that to render the right number of area components on the map. Styling is given for you but you'll have to pass the area name to the `id` attribute to make it appear in the right place on the map. Format the name to remove underscores and capitalize all words for the label. Ex: 'high_plains' should be displayed as "High Plains"
 
 Checkpoint 4: Render the Hosts
 ------------------------------
-The `Host` component represents a host Thumbnail. You'll have to render the appropriate number of hosts based on the data fetched from the `/hosts` endpoint with the appropriate imageUrl for each. You'll also need to make sure they render in the right place. Note that their `active` attribute is set to `false`, meaning they come in decommissioned. Decommissioned hosts should always appear in `ColdStorage` no matter what their `area` attribute is set to.
+✅ The `Host` component represents a host Thumbnail. You'll have to render the appropriate number of hosts based on the data fetched from the `/hosts` endpoint with the appropriate imageUrl for each. You'll also need to make sure they render in the right place. Note that their `active` attribute is set to `false`, meaning they come in decommissioned. Decommissioned hosts should always appear in `ColdStorage` no matter what their `area` attribute is set to.
 
 Checkpoint 5: Host Behavior
 ---------------------------
 Follow these rules for selecting and moving hosts:
 
-1. Clicking a `Host` selects them with a red border and displays their information in the `HostInfo` component. Styling has been given via classNames (see Host component).
-2. Only one `Host` can be selected at a time.
-3. Only one `Host` can exist on the screen at a time. If they're in `Cold Storage` then they're not on the `WestworldMap` and visa versa.
-4. If a host's `active` attribute is set to `false` then they are decommissioned and should appear in `ColdStorage`. The `HostInfo` radio button should reflect this as well, reading "Active" if `active: true` and "Decomissioned" if `active: false`.
-5. The Area dropdown should be pre-selected with the area the host is currently in, even if they are in `ColdStorage`.
-6. If a host is Active, selecting a new area from the dropdown should move that host to the corresponding area. If the host is Decommissioned they should not be able to leave `ColdStorage`, but their `area` attribute/dropdown should still update.
-7. Setting a hosts toggle to Decommissioned should immediately remove them from their area and place them in `ColdStorage`.
+1. ✅Clicking a `Host` selects them with a red border and displays their information in the `HostInfo` component. Styling has been given via classNames (see Host component).
+2. ✅Only one `Host` can be selected at a time.
+3. ✅Only one `Host` can exist on the screen at a time. If they're in `Cold Storage` then they're not on the `WestworldMap` and visa versa.
+4. ✅If a host's `active` attribute is set to `false` then they are decommissioned and should appear in `ColdStorage`. The `HostInfo` radio button should reflect this as well, reading "Active" if `active: true` and "Decomissioned" if `active: false`.
+5. ✅The Area dropdown should be pre-selected with the area the host is currently in, even if they are in `ColdStorage`.
+6. ✅If a host is Active, selecting a new area from the dropdown should move that host to the corresponding area. If the host is Decommissioned they should not be able to leave `ColdStorage`, but their `area` attribute/dropdown should still update.
+7. ✅Setting a hosts toggle to Decommissioned should immediately remove them from their area and place them in `ColdStorage`.
 
 Checkpoint 6: Limit Hosts
 --------------------------
-Each `Area` should only allow the number of hosts given by that area's limit attribute. This includes hosts set to areas in `ColdStorage`. This is a hard deliverable and there are many ways to do this. Think about where you should actually be blocking this action (ie. what component should the rejection happen in).
+✅ Each `Area` should only allow the number of hosts given by that area's limit attribute. This includes hosts set to areas in `ColdStorage`. This is a hard deliverable and there are many ways to do this. Think about where you should actually be blocking this action (ie. what component should the rejection happen in).
 
 Checkpoint 7: Activate All/Decommission All
 --------------------------------------------
-The Activate All/Decommission All button is located in the LogPanel component. If you want, you can extract this into a separate component that LogPanel imports, but it's not necessary.
+ The Activate All/Decommission All button is located in the LogPanel component. If you want, you can extract this into a separate component that LogPanel imports, but it's not necessary.
 
-Clicking the `Activate All` button should activate all hosts. The button should turn green and change to read `Decommission All`. Clicking the `Decommission All` button should decommission all hosts and the button should change red and read `Activate All`. Remember, if all hosts are activated, this should be reflected in a host's activate toggle.
+✅Clicking the `Activate All` button should activate all hosts. The button should turn green and change to read `Decommission All`. Clicking the `Decommission All` button should decommission all hosts and the button should change red and read `Activate All`. Remember, if all hosts are activated, this should be reflected in a host's activate toggle.
 
 Checkpoint 8: Logging
 ----------------------
-Last but not least, you should log the actions a user takes. Use the Log service class we've provided (located in: `src/services/Log`). To use the class all you need to do is invoke a particular method (take a look at the class to see what methods are available) and send in the message you want to log as an argument. Don't worry about the styling, that's taken care of. For example, if you want to log an error saying "Something bad happened" you would write:
+✅Last but not least, you should log the actions a user takes. Use the Log service class we've provided (located in: `src/services/Log`). To use the class all you need to do is invoke a particular method (take a look at the class to see what methods are available) and send in the message you want to log as an argument. Don't worry about the styling, that's taken care of. For example, if you want to log an error saying "Something bad happened" you would write:
 
 `Log.error("Something bad happened")`
 
@@ -99,22 +99,22 @@ You should collect these in some type of array somewhere and give it to the `.ma
 
 At the very least you should be logging the following:
 
-##### 1) Setting a hosts area:
+##### 1) Setting a hosts area: ✅
 `Notify: {first name of host} set in area {formatted area name}`
 
-##### 2) Activating a host:
+##### 2) Activating a host: ✅
 `Warn: Activated {first name of host}`
 
-##### 3) Decommissioning a host:
+##### 3) Decommissioning a host: ✅
 `Notify: Decommissioned {first name of host}`
 
-##### 4) Activating all hosts:
+##### 4) Activating all hosts: ✅
 `Warn: Activating all hosts!`
 
-##### 5) Decommissioning all hosts:
+##### 5) Decommissioning all hosts: ✅
 `Notify: Decommissiong all hosts.`
 
-##### 6) Trying to add too many hosts to an area:
+##### 6) Trying to add too many hosts to an area: ✅
 `Error: Too many hosts. Cannot add {first name of host} to {formatted area name}`
 
 Finish

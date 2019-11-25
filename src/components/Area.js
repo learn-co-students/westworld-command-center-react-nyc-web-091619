@@ -1,16 +1,21 @@
 import React from 'react';
 import '../stylesheets/Area.css'
+import HostList from './HostList';
 
-const Area = () => (
+const Area = (props) => {
 
-  <div className='area' id={/* Pass in the area name here to make sure this is styled correctly */}>
-    <h3 className='labels'>{/* Don't just pass in the name from the data...clean that thing up */}</h3>
+  const slugify = (name) =>{
+    let words = name.replace(/_/, " ").split(" ")
+    return words.map(word => word[0].toUpperCase() + word.slice(1)).join("")
+  }
 
-    {/* See Checkpoint 1 item 2 in the Readme for a clue as to what goes here */}
-
-  </div>
-
-)
+  return (
+    <div className='area' id={props.name}>
+      <h3 className='labels'>{slugify(props.name)}</h3>
+      <HostList hosts={props.hosts} swapHost={props.swapHost} currentHost={props.currentHost}/>
+    </div>
+  )
+}
 
 Area.propTypes = {
   hosts: function(props, propName, componentName){
